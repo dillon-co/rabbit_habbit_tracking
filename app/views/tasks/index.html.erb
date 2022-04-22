@@ -1,0 +1,38 @@
+<<div class="container">
+  <h1>Tasks</h1>
+
+    Stay consistent with your habits
+    Every time you log yourself doing the thing, there's a 20% chance that
+    you can reward yourself for being awesome. This app uese reward prediction error.
+    <br/> <br/>
+    Learn more about this in this time stamp on <%= link_to "this video", "https://youtu.be/vA50EK70whE?t=3003" %> (00:50:03)
+
+
+  <%= link_to "New", new_task_path, class: 'btn btn-primary' %>
+  <br/>
+  <div class="card">
+
+    <table>
+      <tr>
+        <th>Task Name</th>
+        <th>How Long</th>
+        <th>Time Of Day</th>
+        <th>Frequency</th>
+        <th>Times Logged</th>
+        <th>Times Rewarded</th>
+        <th>Log</th>
+      </tr>
+      <% @tasks.each do |task| %>
+          <tr>
+              <td><%= link_to task.name, task_path(task) %></td>
+              <td><%= task.required_time_in_minutes %></td>
+              <td><%= task.time_of_day %></td>
+              <td><%= task.frequency %></td>
+              <td><%= task.logs.count %></td>
+              <td><%= task.logs.select {|l| l.gave_reward? }.count %></td>
+              <td><%= link_to "+", new_task_log_path(task), class: 'btn btn-success' %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

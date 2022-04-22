@@ -1,0 +1,24 @@
+<div class="container">
+  <h1>Create a new task</h1>
+  <div class="card">
+    <%= form_for @task do |f| %>
+        <h3> Task Name  </h3>
+        <%= f.text_field :name %>
+        <br/>
+        <h3> Details  </h3>
+        <%= f.text_area :details %>
+        <br/>
+        <h3> Required time (in minutes)  </h3>
+        <%= f.number_field :required_time_in_minutes, in: 10..300, step: 5 %>
+        <br/>
+        <h3> Time of day</h3>
+        <%= f.select :time_of_day, Task.time_of_days.keys %>
+        <br/>
+        <h3>How Often?</h3>
+        <%= f.select :frequency, Task.frequencies.keys %>
+        <br/>
+        <br/>
+      <%= f.submit "Create Task", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
