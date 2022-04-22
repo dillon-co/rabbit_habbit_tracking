@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   def create
     task = Task.new(task_params)
     if task.save
-      redirect_to tasks_show_path(task.id)
+      redirect_to root_path
     else
       render StandardError
     end
