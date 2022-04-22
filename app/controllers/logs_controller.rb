@@ -7,8 +7,8 @@ class LogsController < ApplicationController
   end
 
   def new
-    puts "\n\n\n #{params} \n\n\n"
-    @task = Task.find_by(params[:task_id])
+    # puts "\n\n\n #{params} \n\n\n"
+    @task = Task.find(params[:task_id])
     @log = @task.logs.new
   end
 
