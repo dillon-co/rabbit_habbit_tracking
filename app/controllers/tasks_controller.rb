@@ -16,7 +16,6 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     @logs = @task.logs
-    @new_log = Log.new
   end
 
   def index
@@ -27,9 +26,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:name,
-                                 :details, 
-                                 :required_time_in_minutes, 
-                                 :time_of_day, 
+                                 :details,
+                                 :required_time_in_minutes,
+                                 :time_of_day,
                                  :frequency)
   end
 end

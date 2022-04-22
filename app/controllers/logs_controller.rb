@@ -7,11 +7,13 @@ class LogsController < ApplicationController
   end
 
   def new
-    @task = Task.find_by(params[:id])
+    puts "\n\n\n #{params} \n\n\n"
+    @task = Task.find_by(params[:task_id])
     @log = @task.logs.new
   end
 
   def create
+    puts "\n\n\n #{params} \n\n\n"
     log = Task.find(params[:task_id]).logs.new(log_params)
     if log.save
       log_redirect_path = log.gave_reward? ? reward_path : root_path
