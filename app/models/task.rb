@@ -4,7 +4,8 @@ class Task < ApplicationRecord
   enum time_of_day: {
     morning: 0,
     afternoon: 1,
-    evening: 2
+    evening: 2,
+    any: 3
   }
 
   enum frequency: {
