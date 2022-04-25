@@ -14,25 +14,25 @@
   <br/>
   <div class="card">
 
-    <table>
+    <table class="table table-dark">
       <tr>
-        <th>Log</th>
-        <th>Task Name</th>
-        <th>Duration</th>
-        <th>Time</th>
-        <th>Frequency</th>
-        <th>Logged</th>
-        <th>Rewards</th>
+        <th scope="col">Log</th>
+        <th scope="col">Name</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Time</th>
+        <th scope="col">Frequency</th>
+        <th scope="col">Logged</th>
+        <th scope="col">Rewards</th>
       </tr>
       <% @tasks.each do |task| %>
           <tr>
-              <td><%= link_to "+", new_task_log_path(task), class: 'btn btn-success' %></td>
-              <td><%= link_to task.name.titleize, task_path(task) %></td>
-              <td><%= task.required_time_in_minutes %></td>
-              <td><%= task.time_of_day %></td>
-              <td><%= task.frequency %></td>
-              <td><%= task.logs.count %></td>
-              <td><%= task.logs.select {|l| l.gave_reward? }.count %></td>
+            <th scope="row"><%= link_to "+", new_task_log_path(task), class: 'btn btn-success' %></th>
+            <td><%= link_to task.name.titleize, task_path(task) %></td>
+            <td><%= task.required_time_in_minutes %></td>
+            <td><%= task.time_of_day %></td>
+            <td><%= task.frequency %></td>
+            <td><%= task.logs.count %></td>
+            <td><%= task.logs.select {|l| l.gave_reward? }.count %></td>
           </tr>
       <% end %>
     </table>
