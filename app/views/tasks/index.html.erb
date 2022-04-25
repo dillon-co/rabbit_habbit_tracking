@@ -18,10 +18,9 @@
       <tr>
         <th scope="col">Log</th>
         <th scope="col">Name</th>
-        <th scope="col">Duration</th>
-        <th scope="col">Time</th>
-        <th scope="col">Frequency</th>
-        <th scope="col">Logged</th>
+        <th scope="col">Dur.</th>
+        <th scope="col">Time
+        <th scope="col">Log'd</th>
         <th scope="col">Rewards</th>
       </tr>
       <% @tasks.each do |task| %>
@@ -29,8 +28,8 @@
             <th scope="row"><%= link_to "+", new_task_log_path(task), class: 'btn btn-success' %></th>
             <td><%= link_to task.name.titleize, task_path(task) %></td>
             <td><%= task.required_time_in_minutes %></td>
-            <td><%= task.time_of_day %></td>
-            <td><%= task.frequency %></td>
+            <td><%= task.time_of_day %><br/>
+            <%= task.frequency %></td>
             <td><%= task.logs.count %></td>
             <td><%= task.logs.select {|l| l.gave_reward? }.count %></td>
           </tr>
